@@ -19,13 +19,14 @@ public class TestEbayPersonalUserRegistration extends BaseTestClass{
         try{
             firstInteractionPage.registerUser();
             personalUserRegisterPage.selectPersonalAccRadioBtn();
-            personalUserRegisterPage.enterFirstName("");
-            personalUserRegisterPage.enterLastName("");
-            personalUserRegisterPage.enterEmail("");
-            personalUserRegisterPage.enterPwd("");
+            personalUserRegisterPage.enterFirstName(testDataProvider.getFirstName());
+            personalUserRegisterPage.enterLastName(testDataProvider.getLastName());
+            personalUserRegisterPage.enterEmail(testDataProvider.getUserEmail);
+            personalUserRegisterPage.enterPwd(testDataProvider.getUserPassword);
             personalUserRegisterPage.registerPersonalUser();
 
         }catch (Exception e){
+           Log.logError(getClass().getName(), "registerPersonalUserWorkFlow", "Unable to Register the user successfully");
         }
     }
 }
