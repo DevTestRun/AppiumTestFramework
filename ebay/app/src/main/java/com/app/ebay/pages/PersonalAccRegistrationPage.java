@@ -2,7 +2,6 @@ package com.app.ebay.pages;
 
 import com.app.ebay.helper.AppiumHelper;
 import com.app.ebay.logger.Log;
-
 import org.apache.commons.lang3.ObjectUtils;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -32,8 +31,6 @@ public class PersonalAccRegistrationPage extends AppiumHelper {
 
     @FindBy(id = "PASSWORD")
     public MobileElement password;
-
-    /* By password = By.id("PASSWORD");*/
 
     @FindBy(id = "ppaFormSbtBtn")
     public MobileElement personalAccRegister;
@@ -74,7 +71,14 @@ public class PersonalAccRegistrationPage extends AppiumHelper {
      *  @return:  None
      */
     public void enterLastName(String txt){
-        inputString(lastName,txt);
+         try{
+            if(uName != null){
+                inputString(lastName,txt);
+                Log.info("Last Name entered");
+            }
+        }catch(Exception e){
+            Log.logError(getClass().getName(),"enterLastName","Text is not entered in last name field");
+        }
     }
 
     /** Method : enterEmail
@@ -84,7 +88,14 @@ public class PersonalAccRegistrationPage extends AppiumHelper {
      *  @return:  None
      */
     public void enterEmail(String txt){
-        inputString(email,txt);
+        try{
+            if(uName != null){
+                inputString(email,txt);
+                Log.info("email entered");
+            }
+        }catch(Exception e){
+            Log.logError(getClass().getName(),"enterEmail","Text is not entered in ename field");
+        }
     }
 
     /** Method : enterPwd
@@ -93,7 +104,14 @@ public class PersonalAccRegistrationPage extends AppiumHelper {
      *  @return:  None
      */
     public void enterPwd(String txt){
-        inputString(password,txt);
+        try{
+            if(uName != null){
+                inputString(password,txt);
+                Log.info("password entered");
+            }
+        }catch(Exception e){
+            Log.logError(getClass().getName(),"enterPwd","Text is not entered in password field");
+        }
     }
 
     /** Method : registerPersonalUser
